@@ -83,7 +83,7 @@ function raschetPuti(ab, bc, cd, da, ac, bd, model) {
            }
         let vremyaB = ab * skorost
             let potracheno = korotki2 * rashod
-        setTimeout(vivodB, vremyaB)        //тут ниже убрал скобку
+        setTimeout(vivodB, vremyaB)
          function vivodC() {
                console.log('прибыл в пункт назначения с, потрачено топлива', potracheno, 'л')
            }
