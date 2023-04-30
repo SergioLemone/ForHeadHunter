@@ -1,0 +1,153 @@
+function raschetPuti(ab, bc, cd, da, ac, bd, model) {
+    const skorostKamaza = 2000
+    const skorostUrala = 1500
+    const skorostZila = 1000
+    const rashodKamaza = 2.5
+    const rashodUrala = 3.5
+    const rashodZila = 6
+    let korotki1
+    let korotki2
+    let korotki3
+    let korotki4
+    let korotki5
+    let pokazSkorosti
+    let gosNomer
+    const ba = ab
+    const cb = bc
+    const dc = cd
+    const ad = da
+    const ca = ac
+    const db = bd
+    if (model == 'камаз 1') {
+        skorost = skorostKamaza
+        rashod = rashodKamaza
+        pokazSkorosti= 0.5
+        gosNomer = 'а436ег'
+    }
+    else if (model == 'камаз 2') {
+        skorost = skorostKamaza
+        rashod = rashodKamaza
+        pokazSkorosti= 0.5
+        gosNomer = 'к023лд'
+    }
+    else if (model == 'урал 1') {
+        skorost = skorostUrala
+        rashod = rashodUrala
+        pokazSkorosti= 0.75
+        gosNomer = 'т120ив'
+    }
+    else if (model == 'урал 2') {
+        skorost = skorostUrala
+        rashod = rashodUrala
+        pokazSkorosti= 0.75
+        gosNomer = 'г401то'
+    }
+   else  if (model == 'зил 1') {
+        skorost = skorostZila
+        rashod = rashodZila
+        pokazSkorosti= 1.0
+        gosNomer = 'с186пр'
+    }
+    else  if (model == 'зил 2') {
+        skorost = skorostZila
+        rashod = rashodZila
+        pokazSkorosti= 1.0
+        gosNomer = 'к481ву'
+    }
+    if (ab < ad && ab < ac) {
+       if (bd < bc) {
+           const korotki1 = ab + bd + dc
+           console.log('грузовик', model, 'госномером', gosNomer, 'выехал по кратчайшему пути a-b-d-c длиной', korotki1, 'км, со скоростью', pokazSkorosti, 'км/с')
+           function vivodB() {
+               console.log('прибыл в точку b')
+           }
+        let vremyaB = ab * skorost
+        setTimeout(vivodB, vremyaB)
+            function vivodD() {
+               console.log('прибыл в точку d')
+           }
+        let vremyaD = (ab + bd) * skorost
+           let potracheno = korotki1 * rashod
+        setTimeout(vivodD, vremyaD)
+            function vivodC() {
+               console.log('прибыл в пункт назначения с, потрачено топлива', potracheno, 'л')
+           }
+        let vremyaC = (ab + bd + dc) * skorost
+        setTimeout(vivodC, vremyaC)
+    }
+        else {
+            const korotki2 = ab + bc
+            console.log('грузовик', model, 'госномером', gosNomer, 'выехал по кратчайшему пути a-b-c длиной', korotki2, 'км, со скоростью', pokazSkorosti, 'км/с')
+             function vivodB() {
+               console.log('прибыл в точку b')
+           }
+        let vremyaB = ab * skorost
+            let potracheno = korotki2 * rashod
+        setTimeout(vivodB, vremyaB)        //тут ниже убрал скобку
+         function vivodC() {
+               console.log('прибыл в пункт назначения с, потрачено топлива', potracheno, 'л')
+           }
+        let vremyaC = (ab + bc) * skorost
+        setTimeout(vivodC, vremyaC)
+    }
+    }
+    else if (ac < ab && ac < ad) {
+        const korotki3 = ac
+        console.log('грузовик', model, 'госномером', gosNomer, 'выехал по кратчайшему пути a-c длиной', korotki3, 'км, со скоростью', pokazSkorosti, 'км/с')
+        let potracheno = korotki3 * rashod
+         function vivodC() {
+               console.log('прибыл в пункт назначения с, потрачено топлива', potracheno, 'л')
+           }
+        let vremyaC = ac * skorost
+        setTimeout(vivodC, vremyaC)
+    }
+    else if (ad < ac && ad < ab) {
+        if (db < dc) {
+            const korotki4 = ad+db+bc 
+            console.log('грузовик', model, 'госномером', gosNomer, 'выехал по кратчайшему пути a-d-b-c длиной', korotki4, 'км, со скоростью', pokazSkorosti, 'км/с')
+             function vivodD() {
+               console.log('прибыл в точку d')
+           }
+        let vremyaD = ad * skorost
+        setTimeout(vivodD, vremyaD)
+             function vivodB() {
+               console.log('прибыл в точку b')
+           }
+        let vremyaB = (ad + db) * skorost
+            let potracheno = korotki4 * rashod
+        setTimeout(vivodB, vremyaB)
+             function vivodC() {
+               console.log('прибыл в пункт назначения с, потрачено топлива', potracheno, 'л')
+           }
+        let vremyaC = (ad + db + bc) * skorost
+        setTimeout(vivodC, vremyaC)
+        }
+        else if (db > dc) {
+            const korotki5 = ad + dc
+            console.log('грузовик', model, 'госномером', gosNomer, 'выехал по кратчайшему пути a-d-c длиной', korotki5, 'км, со скоростью', pokazSkorosti, 'км/с')
+             function vivodD() {
+               console.log('прибыл в точку d')
+           }
+        let vremyaD = ad * skorost
+        let potracheno = korotki5 * rashod
+        setTimeout(vivodD, vremyaD)
+             function vivodC() {
+               console.log('прибыл в пункт назначения с, потрачено топлива', potracheno, 'л')
+             }
+        let vremyaC = (ad + dc) * skorost
+        setTimeout(vivodC, vremyaC)
+        
+    }
+    else if (ab = ac = ad) {
+        console.log('грузовик', model, 'госномером', gosNomer, 'выехал по кратчайшему пути a-c длиной', ac, 'км, со скоростью', pokazSkorosti, 'км/с')
+         function vivodC() {
+               console.log('прибыл в пункт назначения с, потрачено топлива', potracheno, 'л')
+           }
+        let vremyaC = ac * skorost
+        setTimeout(vivodC, vremyaC)
+    }
+ else {
+        console.log('ошибка, не нашел кратчайший путь')
+ }
+    }
+}
